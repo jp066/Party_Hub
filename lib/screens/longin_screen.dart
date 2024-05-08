@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:party_hub/screens/longin_screen.dart';
 
 void main() {
   runApp(MaterialApp(
