@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:party_hub/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         title: const Text('Party Hub'),
         titleTextStyle: const TextStyle(
           color: Colors.white,
+          fontFamily: 'Dm_sans',
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
         ),
@@ -61,17 +63,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: idController,
                   decoration: const InputDecoration(
                     labelText: 'ID',
+                    labelStyle: TextStyle(
+                        fontFamily: 'Dm_sans', fontWeight: FontWeight.bold),
                   ),
                   style: const TextStyle(
+                      fontFamily: 'Dm_sans',
                       color: Colors.white), // Adicionando cor branca ao digitar
                 ),
+
                 const SizedBox(height: 20), // Espaço entre o campo ID e a senha
                 TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
                     labelText: 'Senha',
+                    labelStyle: TextStyle(
+                        fontFamily: 'Dm_sans', fontWeight: FontWeight.bold),
                   ),
                   style: const TextStyle(
+                      fontFamily: 'Dm_sans',
                       color: Colors.white), // Adicionando cor branca ao digitar
                   obscureText: true,
                 ),
@@ -84,7 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: const Text(
                     'Entrar',
-                    style: TextStyle(color: Colors.grey, fontSize: 20),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontFamily: 'Dm_sans',
+                        fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     navigateToHomeScreen();

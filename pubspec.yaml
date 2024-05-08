@@ -20,3 +20,7 @@ flutter:
   assets:
     - assets/
   uses-material-design: true
+  fonts:
+    - family: Dm_sans
+      fonts:
+        - asset: assets/fonts/DMSans.ttf
