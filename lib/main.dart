@@ -27,32 +27,54 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        backgroundColor: Colors.black, // Adicionando background color preto
+        title: const Text('Login'),
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
+        ),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: idController,
-              decoration: InputDecoration(
-                labelText: 'ID',
-              ),
+      body: Container(
+        color: Colors.black, // Adicionando background color preto
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextField(
+                  controller: idController,
+                  decoration: const InputDecoration(
+                    labelText: 'ID',
+                  ),
+                ),
+                SizedBox(height: 20), // Espaço entre o campo ID e a senha
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    labelText: 'Senha',
+                  ),
+                  obscureText: true,
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                  ),
+                  child: Text(
+                    'Entrar',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  onPressed: () {
+                    print(
+                        'ID: ${idController.text}, Senha: ${passwordController.text}');
+                  },
+                ),
+              ],
             ),
-            TextField(
-              controller: passwordController,
-              decoration: InputDecoration(
-                labelText: 'Senha',
-              ),
-              obscureText: true,
-            ),
-            ElevatedButton(
-              child: Text('Entrar'),
-              onPressed: () {
-                print('ID: ${idController.text}, Senha: ${passwordController.text}');
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
