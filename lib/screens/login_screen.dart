@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:party_hub/screens/home_screen.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: LoginScreen(),
-  ));
-}
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -17,14 +10,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final idController = TextEditingController();
   final passwordController = TextEditingController();
 
-    void navigateToHomeScreen() {
+  void navigateToHomeScreen() {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => HomeScreen(),
       ),
     );
-    }
+  }
 
   @override
   void dispose() {
@@ -38,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black, // Adicionando background color preto
-        title: const Text('Login'),
+        title: const Text('Party Hub'),
         titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 24.0,
@@ -54,11 +47,23 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                const CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.person,
+                    size: 60,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20), // Espaço entre o ícone e o campo ID
                 TextField(
                   controller: idController,
                   decoration: const InputDecoration(
                     labelText: 'ID',
                   ),
+                  style: const TextStyle(
+                      color: Colors.white), // Adicionando cor branca ao digitar
                 ),
                 const SizedBox(height: 20), // Espaço entre o campo ID e a senha
                 TextField(
@@ -66,20 +71,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Senha',
                   ),
+                  style: const TextStyle(
+                      color: Colors.white), // Adicionando cor branca ao digitar
                   obscureText: true,
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                    foregroundColor: Colors.grey,
+                    backgroundColor: Colors.transparent,
+                    side: const BorderSide(color: Colors.grey),
                   ),
                   child: const Text(
                     'Entrar',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(color: Colors.grey, fontSize: 20),
                   ),
-                    onPressed: () {
+                  onPressed: () {
                     navigateToHomeScreen();
-                    },
+                  },
                 ),
               ],
             ),
@@ -88,5 +97,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  
 }
