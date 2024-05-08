@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:party_hub/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -31,10 +30,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black, // Adicionando background color preto
+        backgroundColor: Colors.white24, // Adicionando background color preto
         title: const Text('Party Hub'),
         titleTextStyle: const TextStyle(
-          color: Colors.white,
+          color: Color(0xFFfca311),
           fontFamily: 'Dm_sans',
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
@@ -42,72 +41,84 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.black, // Adicionando background color preto
+        color: Colors.white24,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.person,
-                    size: 60,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 20), // Espaço entre o ícone e o campo ID
-                TextField(
-                  controller: idController,
-                  decoration: const InputDecoration(
-                    labelText: 'ID',
-                    labelStyle: TextStyle(
-                        fontFamily: 'Dm_sans', fontWeight: FontWeight.bold),
-                  ),
-                  style: const TextStyle(
-                      fontFamily: 'Dm_sans',
-                      color: Colors.white), // Adicionando cor branca ao digitar
-                ),
-
-                const SizedBox(height: 20), // Espaço entre o campo ID e a senha
-                TextField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Senha',
-                    labelStyle: TextStyle(
-                        fontFamily: 'Dm_sans', fontWeight: FontWeight.bold),
-                  ),
-                  style: const TextStyle(
-                      fontFamily: 'Dm_sans',
-                      color: Colors.white), // Adicionando cor branca ao digitar
-                  obscureText: true,
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.grey,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                        AssetImage('assets/icons/Ingresse_logo.png'),
                     backgroundColor: Colors.transparent,
-                    side: const BorderSide(color: Colors.grey),
                   ),
-                  child: const Text(
-                    'Entrar',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 20,
+                  const SizedBox(height: 20),
+                  TextField(
+                    controller: idController,
+                    decoration: const InputDecoration(
+                      labelText: 'ID',
+                      labelStyle: TextStyle(
                         fontFamily: 'Dm_sans',
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFfca311),
+                      ),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: 'Dm_sans',
+                      color: Color(0xFFfca311),
+                    ),
                   ),
-                  onPressed: () {
-                    navigateToHomeScreen();
-                  },
-                ),
-              ],
-            ),
+
+                  const SizedBox(
+                      height: 20), // Espaço entre o campo ID e a senha
+                  TextField(
+                    controller: passwordController,
+                    decoration: const InputDecoration(
+                      labelText: 'Senha',
+                      labelStyle: TextStyle(
+                        fontFamily: 'Dm_sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFfca311),
+                      ),
+                    ),
+                    style: const TextStyle(
+                        color: Color(
+                            0xFFfca311)), // Adicionando cor branca ao digitar
+                    obscureText: true,
+                  ),
+
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: const Color(0xFF00A5DB),
+                      backgroundColor: Colors.transparent,
+                      side: const BorderSide(
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                      minimumSize:
+                          Size(200, 50), // Increase the size of the button
+                    ),
+                    child: Text(
+                      'Entrar',
+                      style: TextStyle(
+                          color: Colors.grey[100],
+                          fontSize: 20,
+                          fontFamily: 'Dm_sans',
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      navigateToHomeScreen();
+                    },
+                  ),
+                ],),
           ),
         ),
       ),
     );
   }
 }
+
+
+// cor_azul: 0xFF00A5DB
+// cor_'laranja': 0xFFfca311
