@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:party_hub/screens/home_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,6 +16,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final idController = TextEditingController();
   final passwordController = TextEditingController();
+
+    void navigateToHomeScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
+    );
+    }
 
   @override
   void dispose() {
@@ -50,27 +60,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: 'ID',
                   ),
                 ),
-                SizedBox(height: 20), // Espaço entre o campo ID e a senha
+                const SizedBox(height: 20), // Espaço entre o campo ID e a senha
                 TextField(
                   controller: passwordController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Senha',
                   ),
                   obscureText: true,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Entrar',
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-                  onPressed: () {
-                    print(
-                        'ID: ${idController.text}, Senha: ${passwordController.text}');
-                  },
+                    onPressed: () {
+                    navigateToHomeScreen();
+                    },
                 ),
               ],
             ),
@@ -79,4 +88,5 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+  
 }
