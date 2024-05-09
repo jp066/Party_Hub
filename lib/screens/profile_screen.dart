@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos_central/screens/login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,21 +15,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Center(child: 
-        Text("Profile",
-        style: TextStyle(
-            color: Color(0xFFfca311),
-            fontFamily: "Dm_sans",
-            fontSize: 25)),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
+            },
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                color: Color.fromARGB(255, 255, 50, 47),
+                fontFamily: "Dm_sans",
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
       ),
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        color: Color(0xFFfca311),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-    ),
     );
   }
 }

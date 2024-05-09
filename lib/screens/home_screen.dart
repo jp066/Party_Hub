@@ -7,13 +7,14 @@ class HomeScreen extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sos Central',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-        primaryColor: AppColors.orangeSwatch
-      ),
-      home: const MainPage()
-    );
-  }
+      return MaterialApp(
+        title: 'Sos Central',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+          primaryColor: AppColors.orangeSwatch
+        ),
+        home: const MainPage()
+      );
+    }
 }
