@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white24, // Adicionando background color preto
-        title: const Text('Party Hub'),
+        title: const Text('SOS Central'),
         titleTextStyle: const TextStyle(
           color: Color(0xFFfca311),
           fontFamily: 'Dm_sans',
@@ -56,41 +56,63 @@ class _LoginScreenState extends State<LoginScreen> {
                     backgroundColor: Colors.transparent,
                   ),
                   const SizedBox(height: 20),
-                  TextField(
+                    TextField(
                     controller: idController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'ID',
                       labelStyle: TextStyle(
-                        fontFamily: 'Dm_sans',
-                        fontWeight: FontWeight.bold,
+                      fontFamily: 'Dm_sans',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFfca311),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
                         color: Color(0xFFfca311),
+                      ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFfca311),
+                        width: 2.0,
+                      ),
                       ),
                     ),
                     style: const TextStyle(
                       fontFamily: 'Dm_sans',
                       color: Color(0xFFfca311),
                     ),
-                  ),
+                    ),
 
                   const SizedBox(
                       height: 20), // Espaço entre o campo ID e a senha
-                  TextField(
+                    TextField(
                     controller: passwordController,
                     decoration: const InputDecoration(
                       labelText: 'Senha',
                       labelStyle: TextStyle(
-                        fontFamily: 'Dm_sans',
-                        fontWeight: FontWeight.bold,
+                      fontFamily: 'Dm_sans',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFfca311),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
                         color: Color(0xFFfca311),
+                      ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFfca311),
+                        width: 2.0,
+                      ),
                       ),
                     ),
                     style: const TextStyle(
-                        color: Color(
-                            0xFFfca311)), // Adicionando cor branca ao digitar
+                      color: Color(0xFFfca311),
+                    ),
                     obscureText: true,
-                  ),
+                    ),
 
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color(0xFF00A5DB),
