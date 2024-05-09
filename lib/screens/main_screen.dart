@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:party_hub/screens/chat_screen.dart';
-import 'package:party_hub/screens/create_event_screen.dart';
-import 'package:party_hub/screens/login_screen.dart';
-import 'package:party_hub/screens/explorer_screen.dart';
-import 'package:party_hub/screens/home_screen.dart';
+import 'package:sos_central/screens/chat_screen.dart';
+import 'package:sos_central/screens/create_event_screen.dart';
+import 'package:sos_central/screens/login_screen.dart';
+import 'package:sos_central/screens/explorer_screen.dart';
+import 'package:sos_central/screens/home_screen.dart';
 
 class MainScreen extends StatelessWidget{
   const MainScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget{
             MaterialPageRoute(builder: (context) => CreateEventPage()),
           );
         },
-        child: Icon(Icons.add_circle_rounded,
+        child: Icon(Icons.add,
          color: Color(0xFFfca311)),
         shape: CircleBorder(),
       ),

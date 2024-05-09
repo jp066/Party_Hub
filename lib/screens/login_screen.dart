@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:party_hub/screens/home_screen.dart';
+import 'package:sos_central/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
 
