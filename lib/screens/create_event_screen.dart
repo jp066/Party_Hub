@@ -10,6 +10,8 @@ class Event {
   Event({required this.name, required this.date, required this.time, required this.location, required this.description});
 }
 class CreateEventPage extends StatefulWidget {
+  const CreateEventPage({super.key});
+
   @override
   _CreateEventPageState createState() => _CreateEventPageState();
 }
@@ -74,7 +76,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       });
 
       // Simulate a delay to mimic server request
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         // Form is validated, you can process the data
         Event newEvent = Event(
           name: _nameController.text,
