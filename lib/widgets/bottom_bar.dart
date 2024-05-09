@@ -1,48 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:party_hub/screens/criar_evento.dart';
-import 'package:party_hub/screens/login_screen.dart';
-import 'package:party_hub/screens/explorer_screen.dart';
-import 'package:party_hub/screens/profile_screen.dart';
 
-PreferredSizeWidget showBottomBar(BuildContext context) {
-  return AppBar(
-    leading: IconButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProfileScreen()),
-        );
-      },
-      icon: Icon(Icons.person),
-    ),
-    actions: [
-      TextButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ExplorerScreen()),
-          );
-        },
-        child: const Text('Explore'),
+class BottomBar extends StatelessWidget{
+  const BottomBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add, color: Color(0xFFfca311)),
+        shape: CircleBorder(),
       ),
-      TextButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CreateEventPage()),
-          );
-        },
-        child: const Text('Criar Evento'),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: Color(0xFFfca311),
+        child: IconTheme(
+          data: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+          child: Padding(
+            padding: EdgeInsets.all(5.0), // Decreased padding value
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                ),
+                SizedBox(width: 40.0),
+                IconButton(
+                  icon: Icon(Icons.notifications),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.account_circle),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
-      TextButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LoginScreen()),
-          );
-        },
-        child: const Text('Login'),
-      ),
-    ],
-  );
+    );
+  }
 }

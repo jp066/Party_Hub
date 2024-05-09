@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:party_hub/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
