@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-//import 'package:sos_central/widgets/bottom_bar.dart';
+import 'package:sos_central/theme/app_colors.dart';
+import 'package:sos_central/theme/main_page.dart';
 
 class HomeScreen extends StatelessWidget {
-  @override
+  const HomeScreen ({super.key});
+
+  @override 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      return MaterialApp(
+        title: 'Sos Central',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+          primaryColor: AppColors.orangeSwatch
         ),
-      ),
-    );
-  }
+        home: const MainPage()
+      );
+    }
 }
