@@ -30,19 +30,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           controller: _tabController,
           tabs: const <Widget>[
             Tab(
-              icon: Icon(Icons.newspaper, color: Color.fromARGB(255, 255, 50, 47)),
+              icon: Icon(Icons.newspaper,
+                  color: Color.fromARGB(255, 255, 50, 47)),
             ),
             Tab(
-              icon: Icon(Icons.cloud_outlined, color: Color.fromARGB(255, 255, 50, 47),),
+              icon: Icon(
+                Icons.cloud_outlined,
+                color: Color.fromARGB(255, 255, 50, 47),
+              ),
             ),
           ],
         ),
       ),
-      body: const Column(
-        children: [
-          // Seção de previsões do tempo
-        ],
-      ),
+//      body: 
     );
   }
 }

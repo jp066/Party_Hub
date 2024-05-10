@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sos_central/screens/home_screen.dart';
+import 'package:sos_central/widgets/CustomSlider.dart';
+import 'package:sos_central/widgets/custom_Text_Form_fild.dart';
+import 'package:sos_central/widgets/custom_bottom.dart';
+import 'package:sos_central/widgets/custom_categories_list.dart';
+import 'package:iconly/iconly.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -22,22 +28,14 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             // Search Bar
             Container(
-              color: Colors.white,
+              color: Colors.transparent,
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Row(
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          color: mainText,
-                        )),
                     Expanded(
                       child: CostomTextFormFild(
-                        hint: "Serch",
+                        hint: "Search",
                         prefixIcon: IconlyLight.search,
                         controller: searchController,
                         filled: true,
@@ -76,7 +74,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                         icon: const Icon(
                           IconlyBold.filter,
-                          color: mainText,
+                          color: Colors.black,
                         )),
                   ],
                 ),
@@ -89,7 +87,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
             // Previous Searches
             Container(
-              color: Colors.white,
+              color: Colors.black,
               child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -103,15 +101,11 @@ class _SearchScreenState extends State<SearchScreen> {
             // Search Suggestions
             Container(
               width: double.infinity,
-              color: Colors.white,
+              color: Colors.transparent,
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Search Suggestions",
-                    style: Theme.of(context).textTheme.headline2,
-                  ),
                   const SizedBox(
                     height: 24,
                   ),
@@ -154,7 +148,7 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               const Icon(
                 IconlyLight.time_circle,
-                color: SecondaryText,
+                color: Colors.blue,
               ),
               const SizedBox(
                 width: 10,
@@ -163,13 +157,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 previousSearchs[index],
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2!
-                    .copyWith(color: mainText),
+                    .bodyMedium!
+                    .copyWith(color: Colors.black),
               ),
               const Spacer(),
               const Icon(
                 Icons.call_made_outlined,
-                color: SecondaryText,
+                color: Colors.blue,
               )
             ],
           ),
@@ -183,10 +177,10 @@ class _SearchScreenState extends State<SearchScreen> {
       margin: EdgeInsets.only(left: 8),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       decoration:
-          BoxDecoration(color: form, borderRadius: BorderRadius.circular(30)),
+          BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(30)),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.bodyText2!.copyWith(color: mainText),
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
       ),
     );
   }
@@ -195,13 +189,13 @@ class _SearchScreenState extends State<SearchScreen> {
     return Container(
       padding: EdgeInsets.all(20),
       height: 500,
-      color: Colors.white,
+      color: Colors.black,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             "Add a Filter",
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           CustomCategoriesList(),
           CustomSlider(),
@@ -213,8 +207,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   Navigator.pop(context);
                 },
                 text: "Cancel",
-                color: form,
-                textColor: mainText,
+                color: Colors.transparent,
+                textColor: Colors.black,
               )),
               SizedBox(
                 width: 20,

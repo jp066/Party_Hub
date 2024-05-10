@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    ExplorerScreen(),
+    SearchScreen(),
     ProfileScreen(),
   ];
 

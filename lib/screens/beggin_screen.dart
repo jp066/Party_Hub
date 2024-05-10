@@ -17,7 +17,7 @@ class _BeginScreenState extends State<BeginScreen>
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 2),
     )..addListener(() {
         setState(() {});
       });
@@ -27,13 +27,13 @@ class _BeginScreenState extends State<BeginScreen>
   }
 
   startTime() async {
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 2);
     return Timer(duration, arbritaryRoute);
   }
 
   arbritaryRoute() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => MainScreen()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => MainScreen()));
   }
 
   @override
@@ -59,17 +59,13 @@ class _BeginScreenState extends State<BeginScreen>
                     width: 300,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                      children: <Widget>[
                         Image.asset(
                           'assets/images/sos-logo-removebg-preview.png',
                           height: 150,
                           width: 150,
                         ),
-                        LinearProgressIndicator(
-                            value: controller.value,
-                            valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 255, 50, 47)),
-                          ),
-                        ],
+                      ],
                     ),
                   ),
                 ),
