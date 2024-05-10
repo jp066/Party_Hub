@@ -26,9 +26,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: const Text(
               'Login',
               style: TextStyle(
-                color: Color.fromARGB(255, 255, 50, 47),
+                color: Colors.black,
                 fontFamily: "Dm_sans",
-                fontSize: 18,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/screens/chat_screen.dart';
 import 'package:sos_central/screens/insert_alert_screen.dart';
-import 'package:sos_central/screens/login_screen.dart';
 import 'package:sos_central/screens/profile_screen.dart';
 import 'package:sos_central/screens/search_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
@@ -55,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: Icon(Icons.event_note_outlined),
+                  icon: Icon(Icons.home),
                   onPressed: () {
                     _onItemTapped(0);
                   },
