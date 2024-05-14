@@ -8,7 +8,6 @@ import 'package:sos_central/screens/home_screen.dart';
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
-
 }
 
 class _MainScreenState extends State<MainScreen> {
@@ -17,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     SearchScreen(),
-    ProfileScreen(),
+//    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -35,8 +34,8 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => CreateEventPage()),
+            context,
+            MaterialPageRoute(builder: (context) => CreateEventPage()),
           );
         },
         child: Icon(Icons.add, color: Color.fromARGB(255, 255, 50, 47)),
@@ -78,7 +77,10 @@ class _MainScreenState extends State<MainScreen> {
                 IconButton(
                   icon: Icon(Icons.account_circle_outlined),
                   onPressed: () {
-                    _onItemTapped(2);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );
                   },
                 ),
               ],

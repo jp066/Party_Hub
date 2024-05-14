@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         bottom: TabBar(
           controller: _tabController,
           tabs: const <Widget>[
@@ -42,7 +43,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ],
         ),
       ),
-//      body: 
+      body: TabBarView(
+        controller: _tabController,
+        children: const <Widget>[
+          Center(
+            child: Text('Tela Notícias'),
+          ),
+          Center(
+            child: Text('Tela Clima'),
+          )
+        ],
+      ),
     );
   }
 }

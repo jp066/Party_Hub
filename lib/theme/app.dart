@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos_central/screens/home_screen.dart';
 import 'package:sos_central/theme/app_colors.dart';
 
 class MyWidget extends StatelessWidget {
@@ -12,7 +13,7 @@ class MyWidget extends StatelessWidget {
         primarySwatch: Colors.orange,
         primaryColor: AppColors.orangeRadiance,
       ),
-      home: const ,
+      home: const HomeScreen()
     );
   }
 }

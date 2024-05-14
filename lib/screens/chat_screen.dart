@@ -51,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   color: Colors.white, fontFamily: "Dm_sans", fontSize: 25)),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
           color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
