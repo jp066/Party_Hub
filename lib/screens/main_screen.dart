@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sos_central/screens/chat_screen.dart';
-import 'package:sos_central/screens/create_event_screen.dart';
+import 'package:sos_central/screens/insert_alert_screen.dart';
 import 'package:sos_central/screens/profile_screen.dart';
-import 'package:sos_central/screens/explorer_screen.dart';
+import 'package:sos_central/screens/search_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,8 +15,8 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    ExplorerScreen(),
-    ProfileScreen(),
+    SearchScreen(),
+//    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -39,21 +38,22 @@ class _MainScreenState extends State<MainScreen> {
             MaterialPageRoute(builder: (context) => CreateEventPage()),
           );
         },
-        child: Icon(Icons.add, color: Color(0xFFfca311)),
+        child: Icon(Icons.add, color: Color.fromARGB(255, 255, 50, 47)),
         shape: CircleBorder(),
+        backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        color: Color(0xFFfca311),
+        color: Colors.black,
         child: IconTheme(
-          data: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+          data: IconThemeData(color: Color.fromARGB(255, 255, 50, 47)),
           child: Padding(
             padding: EdgeInsets.all(5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: Icon(Icons.event_note_outlined),
+                  icon: Icon(Icons.home),
                   onPressed: () {
                     _onItemTapped(0);
                   },
@@ -80,7 +80,8 @@ class _MainScreenState extends State<MainScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ProfileScreen()),
-                    );},
+                    );
+                  },
                 ),
               ],
             ),

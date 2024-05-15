@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sos_central/screens/home_screen.dart';
+import 'package:sos_central/screens/main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -15,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HomeScreen(),
+        builder: (context) => MainScreen(),
       ),
     );
   }
@@ -31,117 +30,120 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white24, // Adicionando background color preto
-        title: const Text('SOS Central'),
-        titleTextStyle: const TextStyle(
-          color: Color(0xFFfca311),
-          fontFamily: 'Dm_sans',
-          fontSize: 24.0,
-          fontWeight: FontWeight.bold,
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        centerTitle: true,
       ),
       body: Container(
-        color: Colors.white24,
+        color: Colors.black,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage:
-                        AssetImage('assets/icons/Ingresse_logo.png'),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const CircleAvatar(
+                  radius: 50,
+                  backgroundImage:
+                      AssetImage('assets/images/sos-logo-fundo-preto.png'),
+                  backgroundColor: Colors.transparent,
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'SOS Central',
+                  style: TextStyle(
+                    fontFamily: 'Dm_sans',
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 50, 47),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: idController,
+                  decoration: const InputDecoration(
+                    labelText: 'DDD + Telefone',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Dm_sans',
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 255, 50, 47),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 50, 47),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 50, 47),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: 'Dm_sans',
+                    color: Color.fromARGB(255, 255, 50, 47),
+                  ),
+                ),
+
+                const SizedBox(height: 20), // Espaço entre o campo ID e a senha
+                TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    labelText: 'Nome',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Dm_sans',
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 255, 50, 47),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 50, 47),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 255, 50, 47),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 255, 50, 47),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: const Color.fromARGB(255, 255, 50, 47),
                     backgroundColor: Colors.transparent,
+                    side: const BorderSide(
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                    minimumSize:
+                        Size(200, 50), // Increase the size of the button
                   ),
-                  const SizedBox(height: 20),
-                    TextField(
-                    controller: idController,
-                    decoration: InputDecoration(
-                      labelText: 'ID',
-                      labelStyle: TextStyle(
-                      fontFamily: 'Dm_sans',
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFfca311),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFfca311),
-                      ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFfca311),
-                        width: 2.0,
-                      ),
-                      ),
-                    ),
-                    style: const TextStyle(
-                      fontFamily: 'Dm_sans',
-                      color: Color(0xFFfca311),
-                    ),
-                    ),
-
-                  const SizedBox(
-                      height: 20), // Espaço entre o campo ID e a senha
-                    TextField(
-                    controller: passwordController,
-                    decoration: const InputDecoration(
-                      labelText: 'Senha',
-                      labelStyle: TextStyle(
-                      fontFamily: 'Dm_sans',
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFfca311),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFfca311),
-                      ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xFFfca311),
-                        width: 2.0,
-                      ),
-                      ),
-                    ),
-                    style: const TextStyle(
-                      color: Color(0xFFfca311),
-                    ),
-                    obscureText: true,
-                    ),
-
-                    const SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color(0xFF00A5DB),
-                      backgroundColor: Colors.transparent,
-                      side: const BorderSide(
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      minimumSize:
-                          Size(200, 50), // Increase the size of the button
-                    ),
-                    child: Text(
-                      'Entrar',
-                      style: TextStyle(
-                          color: Colors.grey[100],
-                          fontSize: 20,
-                          fontFamily: 'Dm_sans',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      navigateToHomeScreen();
-                    },
+                  child: const Text(
+                    'Entrar',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 50, 47),
+                        fontSize: 20,
+                        fontFamily: 'Dm_sans',
+                        fontWeight: FontWeight.bold),
                   ),
-                ],),
+                  onPressed: () {
+                    navigateToHomeScreen();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-
-// cor_azul: 0xFF00A5DB
-// cor_'laranja': 0xFFfca311

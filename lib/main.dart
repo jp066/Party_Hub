@@ -7,7 +7,7 @@ void main() {
   runApp(MaterialApp(
     title: 'SOS Cental',
     theme: ThemeData(
-    splashColor: Colors.transparent,),
+    splashColor: Colors.transparent),
     debugShowCheckedModeBanner: false,
     home: const HomeScreen(),
   ));
