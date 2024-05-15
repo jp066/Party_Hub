@@ -7,17 +7,10 @@ class Event {
   String location;
   String description;
 
-  Event({
-    required this.name,
-    required this.date,
-    required this.time,
-    required this.location,
-    required this.description,
-  });
+  Event({required this.name, required this.date, required this.time, required this.location, required this.description});
 }
-
 class CreateEventPage extends StatefulWidget {
-  const CreateEventPage({Key? key}) : super(key: key);
+  const CreateEventPage({super.key});
 
   @override
   _CreateEventPageState createState() => _CreateEventPageState();
@@ -25,12 +18,20 @@ class CreateEventPage extends StatefulWidget {
 
 class _CreateEventPageState extends State<CreateEventPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _locationController = TextEditingController();
-  final _descriptionController = TextEditingController();
-  bool _creatingEvent = false;
+  late TextEditingController _nameController;
   late DateTime _selectedDate = DateTime.now();
   late TimeOfDay _selectedTime = TimeOfDay.now();
+  late TextEditingController _locationController;
+  late TextEditingController _descriptionController;
+  bool _creatingEvent = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _locationController = TextEditingController();
+    _descriptionController = TextEditingController();
+  }
 
   @override
   void dispose() {
@@ -103,12 +104,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Event created successfully!'),
-            action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () {
-                // Add logic to undo the creation of the event
-              },
-            ),
           ),
         );
       });
@@ -130,16 +125,14 @@ class _CreateEventPageState extends State<CreateEventPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Create Event'),
-        backgroundColor: Colors.black,
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.black, Colors.black],
+            colors: [Color.fromARGB(255, 6, 225, 233), Color.fromARGB(255, 98, 186, 207)],
           ),
-          
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -157,7 +150,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     }
                     return null;
                   },
-                  maxLength: 50, // Example limit
                 ),
                 SizedBox(height: 16.0),
                 Row(
@@ -197,7 +189,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     }
                     return null;
                   },
-                  maxLength: 100, // Example limit
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
@@ -210,7 +201,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     return null;
                   },
                   maxLines: 3,
-                  maxLength: 250, // Example limit
                 ),
                 SizedBox(height: 16.0),
                 Row(
@@ -224,7 +214,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                       onPressed: _resetForm,
                       child: Text('Reset Form'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.red,
                       ),
                     ),
                   ],

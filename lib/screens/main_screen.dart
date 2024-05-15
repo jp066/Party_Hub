@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sos_central/screens/chat_screen.dart';
-import 'package:sos_central/screens/create_event_screen.dart';
-import 'package:sos_central/screens/login_screen.dart';
-import 'package:sos_central/screens/explorer_screen.dart';
+import 'package:sos_central/screens/insert_alert_screen.dart';
+import 'package:sos_central/screens/profile_screen.dart';
+import 'package:sos_central/screens/search_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
 
-class MainScreen extends StatelessWidget{
-  const MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _widgetOptions = <Widget>[
+    HomeScreen(),
+    SearchScreen(),
+//    ProfileScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      body: _widgetOptions.elementAt(_selectedIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -21,36 +38,30 @@ class MainScreen extends StatelessWidget{
             MaterialPageRoute(builder: (context) => CreateEventPage()),
           );
         },
-        child: Icon(Icons.add,
-         color: Color(0xFFfca311)),
+        child: Icon(Icons.add, color: Color.fromARGB(255, 255, 50, 47)),
         shape: CircleBorder(),
+        backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        color: Color(0xFFfca311),
+        color: Colors.black,
         child: IconTheme(
-          data: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+          data: IconThemeData(color: Color.fromARGB(255, 255, 50, 47)),
           child: Padding(
-            padding: EdgeInsets.all(5.0), // Decreased padding value
+            padding: EdgeInsets.all(5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: Icon(Icons.event_note_outlined),
+                  icon: Icon(Icons.home),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                    _onItemTapped(0);
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.travel_explore_outlined),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ExplorerScreen()),
-                    );
+                    _onItemTapped(1);
                   },
                 ),
                 SizedBox(width: 40.0),
@@ -68,7 +79,7 @@ class MainScreen extends StatelessWidget{
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
                     );
                   },
                 ),
