@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sos_central/page/main_page.dart';
 
-class BeginScreen extends StatefulWidget {
-  const BeginScreen({super.key});
+class BegginScreen extends StatefulWidget {
+  const BegginScreen({super.key});
 
   @override
-  State<BeginScreen> createState() => _BeginScreenState();
+  State<BegginScreen> createState() => _BegginScreenState();
 }
 
-class _BeginScreenState extends State<BeginScreen>
+class _BegginScreenState extends State<BegginScreen>
     with TickerProviderStateMixin {
   late AnimationController controller;
 
