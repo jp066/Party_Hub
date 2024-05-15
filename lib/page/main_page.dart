@@ -15,8 +15,6 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    SearchScreen(),
-//    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -61,7 +59,10 @@ class _MainScreenState extends State<MainScreen> {
                 IconButton(
                   icon: Icon(Icons.travel_explore_outlined),
                   onPressed: () {
-                    _onItemTapped(1);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SearchScreen()),
+                    );
                   },
                 ),
                 SizedBox(width: 40.0),

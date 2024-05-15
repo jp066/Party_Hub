@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sos_central/screens/main_screen.dart';
+import 'package:sos_central/page/main_page.dart';
 
 class BeginScreen extends StatefulWidget {
   const BeginScreen({super.key});
