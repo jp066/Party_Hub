@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color orangeRadiance = Color(0xFFfca311);
+
   static const Color white = Color(0xFFFFFFFF);
+
   static const Color osloGray = Color(0xFF949A9A);
+
+  static const Color athenasGray = Color.fromRGBO(90, 187, 187, 1);
 
   static const MaterialColor orangeSwatch = MaterialColor(0xFFfca311, _orangeMap);
 
