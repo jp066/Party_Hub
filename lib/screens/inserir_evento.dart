@@ -7,21 +7,16 @@ class Event {
   String location;
   String description;
 
-  Event({required this.name, required this.date, required this.time, required this.location, required this.description});
+  Event(
+      {required this.name,
+      required this.date,
+      required this.time,
+      required this.location,
+      required this.description});
 }
 
-/*void main() {
-  runApp(MaterialApp(
-    title: 'SOS Cental',
-    theme: ThemeData(splashColor: Colors.transparent),
-    debugShowCheckedModeBanner: false,
-    home: InserirAlertaScreen(),
-  ));
-}*/
-
 class InserirAlertaScreen extends StatefulWidget {
-
-   InserirAlertaScreen({Key? key}) : super(key: key);
+  InserirAlertaScreen({Key? key}) : super(key: key);
 
   @override
   _InserirAlertaScreenState createState() => _InserirAlertaScreenState();
@@ -30,7 +25,7 @@ class InserirAlertaScreen extends StatefulWidget {
 class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;
-  late DateTime _selectedDate = DateTime.now();
+  late DateTime _selectedDate = DateTime().;
   late TimeOfDay _selectedTime = TimeOfDay.now();
   late TextEditingController _locationController;
   late TextEditingController _descriptionController;
@@ -87,7 +82,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
       });
 
       // Simulate a delay to mimic server request
-      Future.delayed( Duration(seconds: 2), () {
+      Future.delayed(Duration(seconds: 2), () {
         // Form is validated, you can process the data
         Event newEvent = Event(
           name: _nameController.text,
@@ -114,7 +109,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Event created successfully!'),
+            content: Text('Alerta inserido! estamos buscando ajuda para você!'),
           ),
         );
       });
@@ -135,12 +130,18 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Event'),
+        backgroundColor: Colors.black,
+        title: Text('Inserir Alerta',
+            style: TextStyle(
+                color: Colors.red,
+                fontFamily: 'Dm_sans',
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold)),
       ),
       body: Container(
         color: Colors.black,
         child: Padding(
-          padding:  EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -148,8 +149,9 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
               children: [
                 TextFormField(
                   controller: _nameController,
-                  decoration: InputDecoration(labelText: 'Event Name', fillColor: Colors.white),
-                  style: TextStyle(color: Colors.red),
+                  decoration: InputDecoration(
+                      labelText: 'Qual sua emergência?', fillColor: Colors.white),
+                  style: TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the event name';
@@ -162,13 +164,14 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Date: ${_selectedDate.year}-${_selectedDate.month}-${_selectedDate.day}',
+                        'Data: ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectDate(context),
-                      child: Text('Select Date', style: TextStyle(color: Colors.red)),
+                      child: Text('Selecione a data',
+                          style: TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),
@@ -177,20 +180,22 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Time: ${_selectedTime.hour}:${_selectedTime.minute}',
+                        'Hora: ${_selectedTime.hour}:${_selectedTime.minute}',
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectTime(context),
-                      child: Text('Select Time', style: TextStyle(color: Colors.red)),
+                      child: Text('Selecione a hora',
+                          style: TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
                   controller: _locationController,
-                  decoration: InputDecoration(labelText: 'Location', fillColor: Colors.white),
+                  decoration: InputDecoration(
+                      labelText: 'Location', fillColor: Colors.white),
                   style: TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -202,7 +207,8 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                 SizedBox(height: 16.0),
                 TextFormField(
                   controller: _descriptionController,
-                  decoration: InputDecoration(labelText: 'Description', fillColor: Colors.white),
+                  decoration: InputDecoration(
+                      labelText: 'Description', fillColor: Colors.white),
                   style: TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -218,7 +224,9 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                   children: [
                     ElevatedButton(
                       onPressed: _creatingEvent ? null : _submitForm,
-                      child: _creatingEvent ? CircularProgressIndicator() : Text('Create Event'),
+                      child: _creatingEvent
+                          ? CircularProgressIndicator()
+                          : Text('Create Event'),
                     ),
                     ElevatedButton(
                       onPressed: _resetForm,

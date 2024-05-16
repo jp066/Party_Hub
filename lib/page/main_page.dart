@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/screens/chat_screen.dart';
-import 'package:sos_central/screens/create_event_screen.dart';
-import 'package:sos_central/screens/profile_screen.dart';
-import 'package:sos_central/screens/search_screen.dart';
+import 'package:sos_central/screens/inserir_evento.dart';
+import 'package:sos_central/screens/perfil_screen.dart';
+import 'package:sos_central/screens/pesquisa_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -77,11 +77,11 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 IconButton(
                   icon: Icon(Icons.account_circle_outlined),
-                  onPressed: () {
+                  onPressed: () {/*
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ProfileScreen()),
-                    );
+                    );*/
                   },
                 ),
               ],
