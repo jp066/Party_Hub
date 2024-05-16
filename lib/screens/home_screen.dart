@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
         primarySwatch: Colors.orange,
         primaryColor: AppColors.orangeSwatch
       ),
-//      home: const MainPage()
     );
   }
 }

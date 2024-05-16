@@ -9,14 +9,25 @@ class Event {
 
   Event({required this.name, required this.date, required this.time, required this.location, required this.description});
 }
-class CreateEventPage extends StatefulWidget {
-  const CreateEventPage({super.key});
+
+/*void main() {
+  runApp(MaterialApp(
+    title: 'SOS Cental',
+    theme: ThemeData(splashColor: Colors.transparent),
+    debugShowCheckedModeBanner: false,
+    home: InserirAlertaScreen(),
+  ));
+}*/
+
+class InserirAlertaScreen extends StatefulWidget {
+
+   InserirAlertaScreen({Key? key}) : super(key: key);
 
   @override
-  _CreateEventPageState createState() => _CreateEventPageState();
+  _InserirAlertaScreenState createState() => _InserirAlertaScreenState();
 }
 
-class _CreateEventPageState extends State<CreateEventPage> {
+class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;
   late DateTime _selectedDate = DateTime.now();
@@ -76,7 +87,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       });
 
       // Simulate a delay to mimic server request
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed( Duration(seconds: 2), () {
         // Form is validated, you can process the data
         Event newEvent = Event(
           name: _nameController.text,
@@ -127,15 +138,9 @@ class _CreateEventPageState extends State<CreateEventPage> {
         title: Text('Create Event'),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 6, 225, 233), Color.fromARGB(255, 98, 186, 207)],
-          ),
-        ),
+        color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:  EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -144,6 +149,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                 TextFormField(
                   controller: _nameController,
                   decoration: InputDecoration(labelText: 'Event Name', fillColor: Colors.white),
+                  style: TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the event name';
@@ -157,11 +163,12 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     Expanded(
                       child: Text(
                         'Date: ${_selectedDate.year}-${_selectedDate.month}-${_selectedDate.day}',
+                        style: TextStyle(color: Colors.red),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectDate(context),
-                      child: Text('Select Date'),
+                      child: Text('Select Date', style: TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),
@@ -171,11 +178,12 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     Expanded(
                       child: Text(
                         'Time: ${_selectedTime.hour}:${_selectedTime.minute}',
+                        style: TextStyle(color: Colors.red),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectTime(context),
-                      child: Text('Select Time'),
+                      child: Text('Select Time', style: TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),
@@ -183,6 +191,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                 TextFormField(
                   controller: _locationController,
                   decoration: InputDecoration(labelText: 'Location', fillColor: Colors.white),
+                  style: TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the location';
@@ -194,6 +203,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                 TextFormField(
                   controller: _descriptionController,
                   decoration: InputDecoration(labelText: 'Description', fillColor: Colors.white),
+                  style: TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a description';
