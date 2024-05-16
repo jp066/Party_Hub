@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sos_central/screens/main_screen.dart';
+import 'package:sos_central/page/main_page.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final idController = TextEditingController();
-  final passwordController = TextEditingController();
+  final nomeController = TextEditingController();
 
   void navigateToHomeScreen() {
     Navigator.push(
@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     idController.dispose();
-    passwordController.dispose();
+    nomeController.dispose();
     super.dispose();
   }
 
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 20), // Espaço entre o campo ID e a senha
                 TextField(
-                  controller: passwordController,
+                  controller: nomeController,
                   decoration: const InputDecoration(
                     labelText: 'Nome',
                     labelStyle: TextStyle(

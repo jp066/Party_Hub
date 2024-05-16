@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/screens/chat_screen.dart';
-import 'package:sos_central/screens/insert_alert_screen.dart';
+import 'package:sos_central/screens/create_event_screen.dart';
 import 'package:sos_central/screens/profile_screen.dart';
 import 'package:sos_central/screens/search_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
@@ -14,9 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    SearchScreen(),
-//    ProfileScreen(),
+    const HomeScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -35,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateEventPage()),
+            MaterialPageRoute(builder: (context) => InserirAlertaScreen()),
           );
         },
         child: Icon(Icons.add, color: Color.fromARGB(255, 255, 50, 47)),
@@ -61,7 +59,10 @@ class _MainScreenState extends State<MainScreen> {
                 IconButton(
                   icon: Icon(Icons.travel_explore_outlined),
                   onPressed: () {
-                    _onItemTapped(1);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SearchScreen()),
+                    );
                   },
                 ),
                 SizedBox(width: 40.0),

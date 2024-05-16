@@ -46,37 +46,39 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0.0,
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 255, 50, 47)),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              style: TextStyle(fontFamily: 'Dm_sans', fontSize: 16.0),
+              style: const TextStyle(fontFamily: 'Dm_sans', fontSize: 16.0),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.grey,
+                fillColor: Colors.grey[300],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: BorderSide.none,
                 ),
-                hintText: 'Pesquise por serviços ou por estados',
-                hintStyle: TextStyle(fontFamily: 'Dm_sans', fontSize: 16.0),
-                prefixIcon: Icon(Icons.search, color: Colors.black),
+                hintText: 'Pesquise por serviços ou por alertas',
+                hintStyle: const TextStyle(fontFamily: 'Dm_sans', fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
+                prefixIcon: const Icon(Icons.search, color: Color.fromARGB(255, 255, 50, 47)),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Expanded(
               child: ListView.builder(
                 itemCount: estados.length, // Adicione esta linha
                 itemBuilder: (context, index) => ListTile(
                   title: Text(estados[index],
-                      style: TextStyle(fontFamily: 'Dm_sans', fontSize: 16.0, color: Colors.white)),
-                  onTap: () {
-                    Navigator.pop(context, estados[index]);
-                  },
+                      style: const TextStyle(
+                          fontFamily: 'Dm_sans',
+                          fontSize: 19.0,
+                          color: Color.fromARGB(255, 255, 50, 47))),
+                  onTap: () {},
                 ),
               ),
             ),
