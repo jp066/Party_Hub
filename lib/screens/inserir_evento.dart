@@ -108,7 +108,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Alerta inserido! estamos buscando ajuda para você!'),
           ),
         );
@@ -130,8 +130,15 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.red,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Colors.black,
-        title: Text('Inserir Alerta',
+        title: const Text('Inserir Alerta',
             style: TextStyle(
                 color: Colors.red,
                 fontFamily: 'Dm_sans',
@@ -141,7 +148,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
       body: Container(
         color: Colors.black,
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -149,90 +156,119 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
               children: [
                 TextFormField(
                   controller: _nameController,
-                  decoration: InputDecoration(
-                      labelText: 'Qual sua emergência?', fillColor: Colors.white),
-                  style: TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
+                  decoration: const InputDecoration(
+                      labelText: 'Qual sua emergência?',
+                      fillColor: Colors.white),
+                  style: const TextStyle(
+                      color: Colors.red, fontFamily: 'Dm_sans', fontSize: 20.0),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter the event name';
+                      return 'Para podermos ajudar, escreva sua emergencia.';
                     }
                     return null;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 Row(
                   children: [
                     Expanded(
                       child: Text(
                         'Data: ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
-                        style: TextStyle(color: Colors.red),
+                        style: const TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'Dm_sans',
+                            fontSize: 20.0),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectDate(context),
-                      child: Text('Selecione a data',
-                          style: TextStyle(color: Colors.red)),
+                      child: const Text('Selecione a data',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontFamily: 'Dm_sans',
+                              fontSize: 20.0)),
                     ),
                   ],
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 Row(
                   children: [
                     Expanded(
                       child: Text(
                         'Hora: ${_selectedTime.hour}:${_selectedTime.minute}',
-                        style: TextStyle(color: Colors.red),
+                        style: const TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'Dm_sans',
+                            fontSize: 20.0),
                       ),
                     ),
                     TextButton(
                       onPressed: () => _selectTime(context),
-                      child: Text('Selecione a hora',
-                          style: TextStyle(color: Colors.red)),
+                      child: const Text('Selecione a hora',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontFamily: 'Dm_sans',
+                              fontSize: 20.0)),
                     ),
                   ],
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _locationController,
-                  decoration: InputDecoration(
-                      labelText: 'Location', fillColor: Colors.white),
-                  style: TextStyle(color: Colors.red),
+                  decoration: const InputDecoration(
+                      labelText: 'Localização', fillColor: Colors.white),
+                  style: const TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter the location';
+                      return 'Por favor adicione uma localização';
                     }
                     return null;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _descriptionController,
-                  decoration: InputDecoration(
-                      labelText: 'Description', fillColor: Colors.white),
-                  style: TextStyle(color: Colors.red),
+                  decoration: const InputDecoration(
+                      labelText: 'Descrição', fillColor: Colors.white),
+                  style: const TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a description';
+                      return 'Por favor adicione uma descrição';
                     }
                     return null;
                   },
-                  maxLines: 3,
+                  maxLines: 2,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: _creatingEvent ? null : _submitForm,
-                      child: _creatingEvent
-                          ? CircularProgressIndicator()
-                          : Text('Create Event'),
-                    ),
+                        onPressed: _creatingEvent ? null : _submitForm,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                        ),
+                        child: _creatingEvent
+                            ? const CircularProgressIndicator()
+                            : const Text('Insira o Alerta',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Dm_sans',
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ))),
                     ElevatedButton(
                       onPressed: _resetForm,
-                      child: Text('Reset Form'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
+                      ),
+                      child: const Text(
+                        'Resetar Campos',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Dm_sans',
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

@@ -19,12 +19,37 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+
   @override
   void dispose() {
     idController.dispose();
     nomeController.dispose();
     super.dispose();
   }
+
+   void cadastrarUser() {
+    if (idController.text.isEmpty || nomeController.text.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Erro'),
+            content: const Text('Preencha todos os campos'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      print('${idController.text}, ${nomeController.text}');
+    }
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    navigateToHomeScreen();
+                    cadastrarUser();
                   },
                 ),
               ],

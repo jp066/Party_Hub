@@ -7,7 +7,7 @@ class HomeSliderItem extends StatelessWidget {
   const HomeSliderItem({
     Key? key,
     required this.isActive,
-    required this.imageUrl,
+    required this.imageUrl, required Image child,
   }) : super(key: key);
 
 
