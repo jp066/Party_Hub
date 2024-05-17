@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/core/bottom_nav_bar_item.dart';
-
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int value) onTap;
