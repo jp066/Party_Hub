@@ -4,7 +4,7 @@ import 'package:sos_central/theme/app_colors.dart';
 class AppRoundedButton extends StatelessWidget {
   final Function()? onTap;
   final IconData iconData;
-  const AppRoundedButton({Key ? key, this.onTap, required this.iconData}) : super(key: key);
+  const AppRoundedButton({super.key, this.onTap, required this.iconData});
 
 
   @override

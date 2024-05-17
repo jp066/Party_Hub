@@ -1,33 +1,46 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:sos_central/features/home/widgets/home_slider_item.dart';
-import 'package:sos_central/theme/dummy.dart';
 
 class HomeSlider extends StatefulWidget {
-  const HomeSlider({super.key});
+  const HomeSlider({Key? key}) : super(key: key);
 
   @override
-  State<HomeSlider> createState() => __HomeSliderState();
+  _HomeSliderState createState() => _HomeSliderState();
 }
 
-class __HomeSliderState extends State<HomeSlider> {
+class _HomeSliderState extends State<HomeSlider> {
   late final PageController _pageController;
-
   int _pageIndex = 0;
-
+  List<dynamic> newsItems = [];
 
   @override
   void initState() {
-    _pageController = PageController(viewportFraction: 0.8, initialPage: 1000);
     super.initState();
+    _pageController = PageController(viewportFraction: 0.8, initialPage: 1000);
+    fetchNews();
+  }
+
+  Future<void> fetchNews() async {
+    final response = await http.get(
+        Uri.parse('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=3'));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        newsItems = jsonDecode(response.body)['items'];
+      });
+    } else {
+      throw Exception('Failed to load news');
+    }
   }
 
   @override
   void dispose() {
     _pageController.dispose();
-        super.dispose();
+    super.dispose();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,20 +48,19 @@ class __HomeSliderState extends State<HomeSlider> {
       child: PageView.builder(
         onPageChanged: (value) {
           setState(() {
-            _pageIndex = value % newsrItems.length;
+            _pageIndex = value % newsItems.length;
           });
-
         },
-        controller: _pageController, 
+        controller: _pageController,
+        itemCount: newsItems.length,
         itemBuilder: (context, index) {
-          final i = index % newsrItems.length;
-         return HomeSliderItem(
-          isActive: _pageIndex == i,
-          imageAssetPath: newsrItems[i]['imageAssetPath']!,
-         );
-        },    
-       
-    ),
+          return HomeSliderItem(
+            isActive: _pageIndex == index,
+            imageUrl: newsItems[index]
+                ['imagens'], // 'imagens' é uma string contendo a URL da imagem
+          );
+        },
+      ),
     );
   }
 }
