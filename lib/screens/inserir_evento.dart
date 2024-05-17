@@ -25,7 +25,7 @@ class InserirAlertaScreen extends StatefulWidget {
 class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;
-  late DateTime _selectedDate = DateTime().;
+  late DateTime _selectedDate = DateTime.now();
   late TimeOfDay _selectedTime = TimeOfDay.now();
   late TextEditingController _locationController;
   late TextEditingController _descriptionController;
@@ -51,7 +51,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
-      firstDate: DateTime.now(),
+      firstDate: DateTime(1900),
       lastDate: DateTime(2101),
     );
 
@@ -82,7 +82,7 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
       });
 
       // Simulate a delay to mimic server request
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         // Form is validated, you can process the data
         Event newEvent = Event(
           name: _nameController.text,
