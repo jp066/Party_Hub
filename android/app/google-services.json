@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "252925243377",
+    "project_id": "sos-central-bccdf",
+    "storage_bucket": "sos-central-bccdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252925243377:android:4ccb0aad6e703b6d4ade50",
+        "android_client_info": {
+          "package_name": "com.company.soscentral"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXfXzpyk6rH0rwh0YPvIcICCtX23Q6eWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

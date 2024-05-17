@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/main%20screen/main_screen.dart';
+import 'package:sos_central/servicos/autenticador.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final idController = TextEditingController();
   final nomeController = TextEditingController();
+
+  AutenticacaoServico _autenticacaoServico = AutenticacaoServico();
 
   void navigateToHomeScreen() {
     Navigator.push(
@@ -46,8 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         },
       );
-    } else {
+/*    } else {
       print('${idController.text}, ${nomeController.text}');
+      _autenticacaoServico.cadastroUsusario(
+        email: idController.text,
+        senha: nomeController.text,
+      );*/
     }
    }
 
