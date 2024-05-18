@@ -1,52 +1,45 @@
-# Party Hub
+# SOS Central
 
-Party Hub é um aplicativo desenvolvido em Flutter para ajudar na organização de festas privadas. Com o Party Hub, você pode facilmente planejar, convidar amigos, gerenciar listas de convidados, e muito mais, tudo em um só lugar.
+SOS Central é um aplicativo desenvolvido para fornecer assistência imediata em situações de emergência. Ele permite que os usuários enviem alertas de socorro e compartilhem sua localização com contatos de confiança e serviços de emergência.
 
 ## Funcionalidades Principais
 
-- **Criação de Eventos**: Crie facilmente novos eventos, dando a eles um título, data, localização e descrição.
-- **Gerenciamento de Convidados**: Adicione e remova convidados da sua lista, mantendo controle sobre quem está confirmado para participar.
-- **Envio de Convites**: Envie convites personalizados para seus amigos diretamente do aplicativo.
-- **Compartilhamento de Eventos**: Compartilhe detalhes do evento através de mensagens, e-mail ou redes sociais.
-- **Notificações**: Receba lembretes sobre eventos próximos e atualizações de confirmação de convidados.
-- **Lista de Tarefas**: Mantenha uma lista de tarefas relacionadas ao evento para garantir que tudo esteja pronto a tempo.
+- **Envio de Alertas**: Envie alertas de emergência com um simples toque.
+- **Compartilhamento de Localização**: Compartilhe automaticamente sua localização com contatos de emergência.
+- **Notificações em Tempo Real**: Receba atualizações em tempo real sobre o status de seus alertas.
+- **Histórico de Alertas**: Acompanhe o histórico de alertas enviados e recebidos.
+- **Chat de Ajuda**: Converse com especialistas ou outros usuários para obter ajuda em situações de emergência.
+- **Timeline de Notícias**: Acompanhe notícias e atualizações relacionadas a emergências e segurança pública em tempo real.
 
 ## Instalação
 
-Para utilizar o Party Hub, siga os passos abaixo:
+Para instalar e executar o SOS Central:
 
 1. Clone este repositório:
-
-```bash
-git clone https://github.com/seu-usuario/party-hub.git
-```
-
+    ```bash
+    git clone https://github.com/jp066/SOS_Central.git
+    ```
 2. Navegue até o diretório do projeto:
-
-```bash
-cd party-hub
-```
-
+    ```bash
+    cd SOS_Central
+    ```
 3. Instale as dependências:
-
-```bash
-flutter pub get
-```
-
+    ```bash
+    flutter pub get
+    ```
 4. Execute o aplicativo:
-
-```bash
-flutter run
-```
+    ```bash
+    flutter run
+    ```
 
 ## Contribuindo
 
-Contribuições são bem-vindas! Se você quiser contribuir com o Party Hub, sinta-se à vontade para abrir um pull request. Certifique-se de seguir as diretrizes de contribuição.
+Contribuições são bem-vindas! Se você deseja contribuir com o SOS Central, sinta-se à vontade para abrir um pull request. Certifique-se de seguir as diretrizes de contribuição.
 
 ## Licença
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ---
 
-Se você tiver alguma dúvida ou sugestão sobre o Party Hub, não hesite em entrar em contato conosco. Esperamos que este aplicativo torne a organização de suas festas privadas muito mais fácil e divertida! 🎉
+Se você tiver alguma dúvida ou sugestão sobre o SOS Central, entre em contato conosco. Esperamos que este aplicativo possa ajudar a aumentar a segurança e a resposta em emergências.
