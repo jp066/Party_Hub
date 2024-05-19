@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sos_central/main%20screen/main_screen.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,6 @@ void main() async {
         title: 'SOS Cental',
         theme: ThemeData(splashColor: Colors.transparent),
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: MainScreen(),
       )));
 }

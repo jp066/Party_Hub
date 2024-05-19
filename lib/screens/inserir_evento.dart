@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Event {
   String name;
@@ -23,6 +24,7 @@ class InserirAlertaScreen extends StatefulWidget {
 }
 
 class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
+  String _result = '';
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;
   late DateTime _selectedDate = DateTime.now();
@@ -71,6 +73,22 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
     if (pickedTime != null && pickedTime != _selectedTime) {
       setState(() {
         _selectedTime = pickedTime;
+      });
+    }
+  }
+
+  Future<void> _buscarCep() async {
+    final cep = _locationController.text;
+    final url = 'https://api.postmon.com.br/v1/cep/$cep';
+
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      setState(() {
+        _result = response.body;
+      });
+    } else {
+      setState(() {
+        _result = 'Error: ${response.statusCode}';
       });
     }
   }
@@ -157,10 +175,17 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(
-                      labelText: 'Qual sua emergência?',
-                      fillColor: Colors.white),
+                    labelText: 'Qual sua emergência?',
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                  ),
                   style: const TextStyle(
-                      color: Colors.red, fontFamily: 'Dm_sans', fontSize: 20.0),
+                    color: Colors.red,
+                    fontFamily: 'Dm_sans',
+                    fontSize: 20.0,
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Para podermos ajudar, escreva sua emergencia.';
@@ -216,7 +241,16 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                 TextFormField(
                   controller: _locationController,
                   decoration: const InputDecoration(
-                      labelText: 'Localização', fillColor: Colors.white),
+                    labelText: 'CEP',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Dm_sans',
+                      fontSize: 20.0,
+                    ),
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                    ),
+                  ),
                   style: const TextStyle(color: Colors.red),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -226,51 +260,48 @@ class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
                   },
                 ),
                 const SizedBox(height: 16.0),
-                TextFormField(
-                  controller: _descriptionController,
-                  decoration: const InputDecoration(
-                      labelText: 'Descrição', fillColor: Colors.white),
-                  style: const TextStyle(color: Colors.red),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Por favor adicione uma descrição';
-                    }
-                    return null;
+                ElevatedButton(
+                  onPressed: () {
+                    _buscarCep().then((value) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Seu endereço: $_result'),
+                        ),
+                      );
+                    });
                   },
-                  maxLines: 2,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                  ),
+                  child: const Text(
+                    'Buscar CEP e mostrar resultado',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Dm_sans',
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
+                const SizedBox(height: 16.0),
                 const SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
+                    CircleAvatar(
+                      backgroundColor: Colors.red,
+                      child: IconButton(
                         onPressed: _creatingEvent ? null : _submitForm,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                        ),
-                        child: _creatingEvent
-                            ? const CircularProgressIndicator()
-                            : const Text('Insira o Alerta',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Dm_sans',
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ))),
-                    ElevatedButton(
-                      onPressed: _resetForm,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        icon: _creatingEvent
+                            ? CircularProgressIndicator()
+                            : Icon(
+                                Icons.check_circle_outline_outlined,
+                                color: Colors.black,
+                                size: 18.0,
+                              ),
+                        color: Colors.red,
                       ),
-                      child: const Text(
-                        'Resetar Campos',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Dm_sans',
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ],

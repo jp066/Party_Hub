@@ -1,226 +1,179 @@
 import 'package:flutter/material.dart';
-import 'package:sos_central/main%20screen/main_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:sos_central/servicos/autenticador.dart';
 
 class LoginScreen extends StatefulWidget {
+  LoginScreen({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final senhaController = TextEditingController();
+  final email = TextEditingController();
+  final senha = TextEditingController();
 
   bool isLogin = true;
   late String titulo;
   late String actionButton;
   late String toggleButton;
+  bool loading = false;
 
-  AutenticacaoServico _autenticacaoServico = AutenticacaoServico();
-
-  void navigateToHomeScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MainScreen(),
-      ),
-    );
-  }
-
+  @override
   void initState() {
     super.initState();
-//    setFormAction(true);
+    setFormAction(true);
   }
 
   setFormAction(bool acao) {
     setState(() {
       isLogin = acao;
-      if (emailController.text.isEmpty || senhaController.text.isEmpty) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('Erro'),
-              content: const Text('Preencha todos os campos'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      } else if (senhaController.text.length < 6) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('Erro'),
-              content: const Text('Senha deve ter no mínimo 6 caracteres'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-      else if (!isLogin){
-        _autenticacaoServico.criarConta(emailController.text, senhaController.text);
-        navigateToHomeScreen();
-      }
-      else {
-        _autenticacaoServico.entrar(emailController.text, senhaController.text);
-        navigateToHomeScreen();
+      if (isLogin) {
+        titulo = 'Bem vindo';
+        actionButton = 'Login';
+        toggleButton = 'Ainda não tem conta? Cadastre-se agora.';
+      } else {
+        titulo = 'Crie sua conta';
+        actionButton = 'Cadastrar';
+        toggleButton = 'Voltar ao Login.';
       }
     });
   }
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    senhaController.dispose();
-    super.dispose();
+/*
+  login() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AuthService>().login(email.text, senha.text);
+    } on AuthException catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
+
+  registrar() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AuthService>().registrar(email.text, senha.text);
+    } on AuthException catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           color: Colors.white,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
-      body: Container(
-        color: Colors.black,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: 100),
+          child: Form(
+            key: formKey,
             child: Column(
-              key: formKey,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const CircleAvatar(
-                  radius: 50,
-                  backgroundImage:
-                      AssetImage('assets/images/sos-logo-fundo-preto.png'),
-                  backgroundColor: Colors.transparent,
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'SOS Central',
-                  style: TextStyle(
-                    fontFamily: 'Dm_sans',
+              children: [
+                Text(
+                  titulo,
+                  style: const TextStyle(
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 255, 50, 47),
+                    letterSpacing: -1.5,
                   ),
                 ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email@exemplo.com',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Dm_sans',
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 50, 47),
+                Padding(
+                  padding: EdgeInsets.all(24),
+                  child: TextFormField(
+                    controller: email,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email',
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                        width: 2.0,
-                      ),
-                    ),
-                  ),
-                  style: const TextStyle(
-                    fontFamily: 'Dm_sans',
-                    color: Color.fromARGB(255, 255, 50, 47),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-
-                const SizedBox(height: 20), // Espaço entre o campo ID e a senha
-                TextFormField(
-                  controller: senhaController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: '******',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Dm_sans',
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 50, 47),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                        width: 2.0,
-                      ),
-                    ),
-                  ),
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 255, 50, 47),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Informe o email corretamente!';
+                      }
+                      return null;
+                    },
                   ),
                 ),
-
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: const Color.fromARGB(255, 255, 50, 47),
-                    backgroundColor: Colors.transparent,
-                    side: const BorderSide(
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                    minimumSize:
-                        const Size(200, 50), // Increase the size of the button
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                  child: TextFormField(
+                    controller: senha,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Senha',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Informa sua senha!';
+                      } else if (value.length < 6) {
+                        return 'Sua senha deve ter no mínimo 6 caracteres';
+                      }
+                      return null;
+                    },
                   ),
-                  child: const Text(
-                      'Entrar',
-                    style:  TextStyle(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                        fontSize: 20,
-                        fontFamily: 'Dm_sans',
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    setFormAction(true);
-                  },
                 ),
-                const SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.all(24.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+/*                      if (formKey.currentState!.validate()) {
+                        if (isLogin) {
+                          login();
+                        } else {
+                          registrar();
+                        }
+                      }*/
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: (loading)
+                          ? [
+                              const Padding(
+                                padding: EdgeInsets.all(16),
+                                child: SizedBox(
+                                  width: 24,
+                                  height: 24,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ]
+                          : [
+                              Icon(Icons.check),
+                              Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text(
+                                  actionButton,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ),
+                            ],
+                    ),
+                  ),
+                ),
                 TextButton(
-                  onPressed: () {
-                    setFormAction(!isLogin);
-                  },
-                  child: const Text(
-                    'Cadastre-se',
-                    style:  TextStyle(
-                        color: Color.fromARGB(255, 255, 50, 47),
-                        fontSize: 20,
-                        fontFamily: 'Dm_sans',
-                        fontWeight: FontWeight.bold),
-                  ),
+                  onPressed: () => setFormAction(!isLogin),
+                  child: Text(toggleButton),
                 ),
               ],
             ),
