@@ -4,13 +4,12 @@ SOS Central é um aplicativo desenvolvido para fornecer assistência imediata em
 
 ## Funcionalidades Principais
 
-- **Envio de Alertas**: Envie alertas de emergência com um simples toque.
-    em andamento.
-- **Compartilhamento de Localização**: Compartilhe automaticamente sua localização com contatos de emergência.
-- **Notificações em Tempo Real**: Receba atualizações em tempo real sobre o status de seus alertas.
-- **Histórico de Alertas**: Acompanhe o histórico de alertas enviados e recebidos.
-- **Chat de Ajuda**: Converse com especialistas ou outros usuários para obter ajuda em situações de emergência.
-- **Timeline de Notícias**: Acompanhe notícias e atualizações relacionadas a emergências e segurança pública em tempo real.
+- **Envio de Alertas**: Envie alertas de emergência com um simples toque. Em andamento.
+- **Compartilhamento de Localização**: Compartilhe automaticamente sua localização com contatos de emergência. A ser incluida.
+- **Notificações em Tempo Real**: Receba atualizações em tempo real sobre o status de seus alertas. A ser incluida
+- **Histórico de Alertas**: Acompanhe o histórico de alertas enviados e recebidos. A ser incluida.
+- **Chat de Ajuda**: Converse com especialistas ou outros usuários para obter ajuda em situações de emergência. Em andamento.
+- **Timeline de Notícias**: Acompanhe notícias e atualizações relacionadas a emergências e segurança pública em tempo real. Em andamento,
 
 ## Instalação
 
