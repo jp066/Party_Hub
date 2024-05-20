@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sos_central/core/bottom_nav_bar.dart';
 import 'package:sos_central/features/bookmarks/pages/bookmarks_page.dart';
 import 'package:sos_central/features/browse/browse_page.dart';
-import 'package:sos_central/features/home/pages/home_page.dart';
+import 'package:sos_central/screens/home_screen.dart';
 import 'package:sos_central/features/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {

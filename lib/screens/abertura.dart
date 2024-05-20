@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sos_central/main%20screen/main_screen.dart';
 
-class BegginScreen extends StatefulWidget {
-  const BegginScreen({super.key});
+class TelaAbertura extends StatefulWidget {
+  const TelaAbertura({super.key});
 
   @override
-  State<BegginScreen> createState() => _BegginScreenState();
+  State<TelaAbertura> createState() => _TelaAberturaState();
 }
 
-class _BegginScreenState extends State<BegginScreen>
+class _TelaAberturaState extends State<TelaAbertura>
     with TickerProviderStateMixin {
   late AnimationController controller;
 

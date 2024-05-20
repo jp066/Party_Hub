@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:sos_central/main%20screen/main_screen.dart';
-import 'package:sos_central/servicos/autenticador.dart';
+import 'package:sos_central/services/autenticador.dart';
 import 'package:sos_central/screens/login_screen.dart';
 
 class AuthCheck extends StatefulWidget {

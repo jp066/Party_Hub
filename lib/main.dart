@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sos_central/main%20screen/main_screen.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sos_central/screens/abertura.dart';
-import 'package:sos_central/servicos/autenticador.dart';
+import 'package:sos_central/services/autenticador.dart';
 import 'package:sos_central/widgets/auth_check.dart';
 import 'package:sos_central/screens/login_screen.dart';
 
@@ -21,6 +20,6 @@ void main() async {
         title: 'SOS Cental',
         theme: ThemeData(splashColor: Colors.transparent),
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: const TelaAbertura(), 
       )));
 }

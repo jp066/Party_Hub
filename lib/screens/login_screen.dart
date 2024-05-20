@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sos_central/servicos/autenticador.dart';
+import 'package:sos_central/services/autenticador.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -40,29 +40,28 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     });
   }
-/*
-  login() async {
-    setState(() => loading = true);
-    try {
-      await context.read<AuthService>().login(email.text, senha.text);
-    } on AuthException catch (e) {
-      setState(() => loading = false);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.message)));
-    }
-  }
 
-  registrar() async {
-    setState(() => loading = true);
-    try {
-      await context.read<AuthService>().registrar(email.text, senha.text);
-    } on AuthException catch (e) {
-      setState(() => loading = false);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.message)));
-    }
-  }
-*/
+//!   login() async {
+//!    setState(() => loading = true);
+//!    try {
+//!      await context.read<AuthService>().login(email.text, senha.text);
+//!    } on AuthException catch (e) {
+//!      setState(() => loading = false);
+//!      ScaffoldMessenger.of(context)
+//!          .showSnackBar(SnackBar(content: Text(e.message)));
+//!    }
+//!  }
+//!
+//!  registrar() async {
+//!    setState(() => loading = true);
+//!    try {
+//!      await context.read<AuthService>().registrar(email.text, senha.text);
+//!    } on AuthException catch (e) {
+//!      setState(() => loading = false);
+//!      ScaffoldMessenger.of(context)
+//!          .showSnackBar(SnackBar(content: Text(e.message)));
+//!    }
+//!  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   titulo,
                   style: const TextStyle(
+                    color: Colors.red,
+                    fontFamily: 'Dm_sans',
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     letterSpacing: -1.5,
@@ -132,16 +133,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(24.0),
-                  child: ElevatedButton(
+                  padding: const EdgeInsets.all(24.0),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
                     onPressed: () {
-/*                      if (formKey.currentState!.validate()) {
-                        if (isLogin) {
-                          login();
-                        } else {
-                          registrar();
-                        }
-                      }*/
+//!                      if (formKey.currentState!.validate()) {
+//!                        if (isLogin) {
+//!                          login();
+//!                        } else {
+//!                          registrar();
+//!                        }
+//!                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -159,12 +163,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                             ]
                           : [
-                              Icon(Icons.check),
+                              const Icon(Icons.check, color: Colors.red),
                               Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   actionButton,
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: 'Dm_sans',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
                                 ),
                               ),
                             ],
@@ -173,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   onPressed: () => setFormAction(!isLogin),
-                  child: Text(toggleButton),
+                  child: Text(toggleButton, style: const TextStyle(color: Colors.red)),
                 ),
               ],
             ),

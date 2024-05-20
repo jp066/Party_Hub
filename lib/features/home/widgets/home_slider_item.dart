@@ -5,10 +5,10 @@ class HomeSliderItem extends StatelessWidget {
   final bool isActive;
 
   const HomeSliderItem({
-    Key? key,
+    super.key,
     required this.isActive,
     required this.imageUrl, required Image child,
-  }) : super(key: key);
+  });
 
 
   @override
@@ -17,18 +17,20 @@ class HomeSliderItem extends StatelessWidget {
       widthFactor: 1.08,
       child: AnimatedScale(
         duration: const Duration(milliseconds: 400),
-        scale: isActive ? 1 : 0.8,
+        scale: isActive ? 1.0 : 0.8,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: Stack(
             children: [
               Container(
-                color: Color.fromARGB(255, 172, 114, 26),
+                color: Colors.black,
               ),
-              Image.network(
+                Image.network(
                 imageUrl,
-                fit: BoxFit.fill,
-              ),
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                ),
             ],
           ),
         ),
