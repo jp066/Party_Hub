@@ -16,14 +16,14 @@ class Event {
       required this.description});
 }
 
-class InserirAlertaScreen extends StatefulWidget {
-  InserirAlertaScreen({Key? key}) : super(key: key);
+class InserirAlerta extends StatefulWidget {
+  InserirAlerta({Key? key}) : super(key: key);
 
   @override
-  _InserirAlertaScreenState createState() => _InserirAlertaScreenState();
+  _InserirAlertaState createState() => _InserirAlertaState();
 }
 
-class _InserirAlertaScreenState extends State<InserirAlertaScreen> {
+class _InserirAlertaState extends State<InserirAlerta> {
   String _result = '';
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;

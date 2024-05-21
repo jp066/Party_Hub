@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sos_central/core/bottom_nav_bar_item.dart';
+
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int value) onTap;
@@ -29,27 +31,27 @@ class BottomNavBar extends StatelessWidget {
               },
             ),
             BottomNavBarItem(
-              text: 'Browse',
-              activeIconData: Icons.language,
-              iconData: Icons.language_outlined,
+              text: 'Pesquisa',
+              activeIconData: Icons.search_sharp,
+              iconData: CupertinoIcons.search,
               isActive: currentIndex == 1,
               onTap: () {
                 onTap(1);
               },
             ),
             BottomNavBarItem(
-              text: 'Bookmarks',
-              activeIconData: Icons.bookmark,
-              iconData: Icons.bookmarks_outlined,
+              text: 'Chat',
+              activeIconData: CupertinoIcons.bubble_middle_bottom_fill,
+              iconData: CupertinoIcons.bubble_left,
               isActive: currentIndex == 2,
               onTap: () {
                 onTap(2);
               },
             ),
             BottomNavBarItem(
-              text: 'Profile',
-              activeIconData: Icons.person,
-              iconData: Icons.person_off_outlined,
+              text: 'Perfil',
+              activeIconData: CupertinoIcons.person_alt_circle,
+              iconData: CupertinoIcons.person_alt_circle_fill,
               isActive: currentIndex == 3,
               onTap: () {
                 onTap(3);

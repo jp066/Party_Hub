@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sos_central/main%20screen/main_screen.dart';
 import 'package:sos_central/theme/app_colors.dart';
-import 'package:sos_central/core/main_page.dart';
 
 
 void main(){
@@ -22,7 +22,7 @@ class MyWidget extends StatelessWidget {
         primarySwatch: Colors.orange,
         primaryColor: AppColors.orangeRadiance,
       ),
-      home: const MainPage(),
+      home: MainScreen(),
     );
   }
 }

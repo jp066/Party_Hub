@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sos_central/features/home/widgets/home_heading.dart';
+//?import 'package:sos_central/features/home/widgets/home_heading.dart';
 import 'package:sos_central/features/home/widgets/home_slider.dart';
-import 'package:sos_central/screens/login_screen.dart';
+import 'package:sos_central/screens/inserir_evento.dart';
+//?import 'package:sos_central/screens/login_screen.dart';
 import 'package:sos_central/screens/temperatura_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,22 +10,51 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: SafeArea( 
-        child: Column(
-          children: [
-          HomeHeading(
-            title: 'Noticias Recentes',          
-             trailing: TextButton(
-              child: const Text('Tempo', style: TextStyle(color: Colors.red, fontFamily: 'Dm_sans', fontWeight: FontWeight.bold)),
-               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TelaDeTemperatura()));
-               },
-               ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: const Text('Home',
+            style: TextStyle(
+                color: Colors.red,
+                fontFamily: 'Dm_sans',
+                fontWeight: FontWeight.bold)),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Tempo',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontFamily: 'Dm_sans',
+                    fontWeight: FontWeight.bold)),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TelaDeTemperatura()));
+            },
           ),
-          const HomeSlider(),
-          const Center(child: Text('Home')),
-        ]),
+        ],
+      ),
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const HomeSlider(),
+              // Adicione mais widgets aqui conforme necessário
+            ],
+          ),
+        ),
+      ),
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => InserirAlerta()),
+          );
+        },
+        child: const Icon(Icons.add, color: Colors.black),
+        shape: const CircleBorder(),
+        backgroundColor: const Color.fromARGB(255, 134, 2, 0),
       ),
     );
   }

@@ -20,6 +20,6 @@ void main() async {
         title: 'SOS Cental',
         theme: ThemeData(splashColor: Colors.transparent),
         debugShowCheckedModeBanner: false,
-        home: const TelaAbertura(), 
+        home: const TelaAbertura(),
       )));
 }
