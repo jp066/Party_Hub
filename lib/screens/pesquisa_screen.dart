@@ -43,11 +43,6 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: Color.fromARGB(255, 255, 50, 47)),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

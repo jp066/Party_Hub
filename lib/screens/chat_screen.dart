@@ -43,21 +43,6 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Center(
-          child: Text("SOS central",
-              style: TextStyle(
-                  color: Colors.white, fontFamily: "Dm_sans", fontSize: 25)),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

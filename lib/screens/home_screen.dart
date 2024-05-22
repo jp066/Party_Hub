@@ -33,12 +33,11 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.black,
-      body: SafeArea(
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const HomeSlider(),
-              // Adicione mais widgets aqui conforme necessário
+              HomeSlider(),
             ],
           ),
         ),

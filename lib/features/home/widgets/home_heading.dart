@@ -11,7 +11,7 @@ class HomeHeading extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20, 30, 20, 16),
       child: Row(
         children: [ 
-        Text(title, style: Theme.of(context).textTheme.headline6,
+        Text(title, style: Theme.of(context).textTheme.titleLarge,
         ),
         const Spacer(),
         if (trailing != null) trailing!,
