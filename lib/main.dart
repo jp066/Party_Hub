@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sos_central/screens/abertura.dart';
 import 'package:sos_central/services/autenticador.dart';
-import 'package:sos_central/widgets/auth_check.dart';
-import 'package:sos_central/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

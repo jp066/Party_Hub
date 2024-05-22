@@ -93,12 +93,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextFormField(
                     style: const TextStyle(color: Colors.white),
                     controller: email,
-                    decoration: const  InputDecoration(
+                    decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red), 
-                          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                          borderSide: BorderSide(color: Colors.red),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
                       labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
+                      labelStyle:
+                          TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
                     ),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -112,27 +114,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 24.0),
-                    child: TextFormField(
+                  child: TextFormField(
                     style: const TextStyle(color: Colors.white),
                     controller: senha,
                     obscureText: true,
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red), 
-                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                          borderSide: BorderSide(color: Colors.red),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
                       labelText: 'Senha',
-                      labelStyle: TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
+                      labelStyle:
+                          TextStyle(color: Colors.red, fontFamily: 'Dm_sans'),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                      return 'Informa sua senha!';
+                        return 'Informa sua senha!';
                       } else if (value.length < 6) {
-                      return 'Sua senha deve ter no mínimo 6 caracteres';
+                        return 'Sua senha deve ter no mínimo 6 caracteres';
                       }
                       return null;
                     },
-                    ),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: OutlinedButton(
