@@ -12,7 +12,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  TextEditingController _userInput = TextEditingController();
+ final TextEditingController _userInput = TextEditingController();
 
   static const apiKey = "AIzaSyBI38lhhyhX5mr-6Bd7lKU2jdKhQ4hvsP4";
 
@@ -50,20 +50,13 @@ class _ChatScreenState extends State<ChatScreen> {
               style: TextStyle(
                   color: Colors.white, fontFamily: "Dm_sans", fontSize: 25)),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.8), BlendMode.dstATop),
-            image: AssetImage('assets/images/sos-fundo.jpg'),
+            image: const AssetImage('assets/images/sos-fundo.jpg'),
             fit: BoxFit.fill,
           ),
         ),
