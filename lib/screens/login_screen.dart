@@ -75,9 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           leading: IconButton(
             icon: const Icon(
               CupertinoIcons.arrow_left_circle,
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Color.fromARGB(255, 100, 1, 1)),
                     controller: emailController,
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 24.0),
                   child: TextFormField(
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Color.fromARGB(255, 100, 1, 1)),
                     controller: senhaController,
                     obscureText: true,
                     decoration: const InputDecoration(
@@ -181,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 24,
                                   height: 24,
                                   child: CircularProgressIndicator(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 100, 1, 1),
                                   ),
                                 ),
                               )
