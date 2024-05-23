@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sos_central/main%20screen/main_screen.dart';
+import 'package:sos_central/main/main_screen.dart';
 import 'package:sos_central/theme/app_colors.dart';
 
 

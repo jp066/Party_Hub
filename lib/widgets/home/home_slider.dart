@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sos_central/services/noticias_servico.dart';
 import 'package:sos_central/models/noticias_models.dart';
-import 'package:sos_central/features/home/widgets/home_slider_item.dart';
+import 'package:sos_central/widgets/home/home_slider_item.dart';
 
 class HomeSlider extends StatefulWidget {
   const HomeSlider({Key? key}) : super(key: key);

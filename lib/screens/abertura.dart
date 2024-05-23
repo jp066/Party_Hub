@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sos_central/main%20screen/main_screen.dart';
+import 'package:sos_central/main/main_screen.dart';
 
 class TelaAbertura extends StatefulWidget {
   const TelaAbertura({super.key});

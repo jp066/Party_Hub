@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Event {
   String name;
@@ -110,9 +111,8 @@ class _InserirAlertaState extends State<InserirAlerta> {
           description: _descriptionController.text,
         );
 
-        // Here you can save the event or send it to an API, for example
-        // For now, let's just print it
-        print(newEvent);
+        // Save the event to Firestore
+        _saveEvent(newEvent);
 
         // After processing the data, you can navigate to another page or show a confirmation dialog
         // For now, let's just clear the form and show a snackbar
@@ -143,6 +143,25 @@ class _InserirAlertaState extends State<InserirAlerta> {
       _selectedTime = TimeOfDay.now();
     });
   }
+
+  void _saveEvent(Event event) {
+    CollectionReference events =
+        FirebaseFirestore.instance.collection('events');
+    events.add({
+      'name': event.name,
+      'date': event.date,
+      'time': event.time.format(context),
+      'location': event.location,
+      'description': event.description,
+    });
+  }
+
+  Future<void> _getEvents() async {
+  CollectionReference events = FirebaseFirestore.instance.collection('events');
+  QuerySnapshot querySnapshot = await events.get();
+  final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+  print(allData);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +260,7 @@ class _InserirAlertaState extends State<InserirAlerta> {
                 TextFormField(
                   controller: _locationController,
                   decoration: const InputDecoration(
-                    labelText: 'CEP',
+                    labelText: 'CEP da localização do alerta',
                     labelStyle: TextStyle(
                       fontFamily: 'Dm_sans',
                       fontSize: 20.0,

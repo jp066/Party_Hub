@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sos_central/core/bottom_nav_bar_item.dart';
+import 'package:sos_central/main/bottom_nav_bar_item.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;

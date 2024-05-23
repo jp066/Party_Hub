@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sos_central/main/main_screen.dart';
 import 'package:sos_central/services/autenticador.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,13 +13,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-  final email = TextEditingController();
-  final senha = TextEditingController();
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
 
   bool isLogin = true;
   late String titulo;
   late String actionButton;
   late String toggleButton;
+  late String logButton;
   bool loading = false;
 
   @override
@@ -41,35 +44,51 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-//!   login() async {
-//!    setState(() => loading = true);
-//!    try {
-//!      await context.read<AuthService>().login(email.text, senha.text);
-//!    } on AuthException catch (e) {
-//!      setState(() => loading = false);
-//!      ScaffoldMessenger.of(context)
-//!          .showSnackBar(SnackBar(content: Text(e.message)));
-//!    }
-//!  }
-//!
-//!  registrar() async {
-//!    setState(() => loading = true);
-//!    try {
-//!      await context.read<AuthService>().registrar(email.text, senha.text);
-//!    } on AuthException catch (e) {
-//!      setState(() => loading = false);
-//!      ScaffoldMessenger.of(context)
-//!          .showSnackBar(SnackBar(content: Text(e.message)));
-//!    }
-//!  }
+  login() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AutenticacaoServico>().login(emailController.text, senhaController.text);
+    } on ExcecaoAutenticador catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+
+  registrar() async {
+    setState(() => loading = true);
+    try {
+      await context
+          .read<AutenticacaoServico>()
+          .registrar(emailController.text, senhaController.text);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MainScreen()),
+      );
+    } on ExcecaoAutenticador catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.arrow_left_circle,
+              color: Colors.red,
+              size: 30,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MainScreen()));
+            },
+          )),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 100),
@@ -92,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(24),
                   child: TextFormField(
                     style: const TextStyle(color: Colors.white),
-                    controller: email,
+                    controller: emailController,
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
@@ -116,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       vertical: 12.0, horizontal: 24.0),
                   child: TextFormField(
                     style: const TextStyle(color: Colors.white),
-                    controller: senha,
+                    controller: senhaController,
                     obscureText: true,
                     decoration: const InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -144,13 +163,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       backgroundColor: Colors.transparent,
                     ),
                     onPressed: () {
-//!                      if (formKey.currentState!.validate()) {
-//!                        if (isLogin) {
-//!                          login();
-//!                        } else {
-//!                          registrar();
-//!                        }
-//!                      }
+                      if (formKey.currentState!.validate()) {
+                        if (isLogin) {
+                          login();
+                        } else {
+                          registrar();
+                        }
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

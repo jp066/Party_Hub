@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sos_central/core/bottom_nav_bar.dart';
+import 'package:sos_central/main/bottom_nav_bar.dart';
 import 'package:sos_central/screens/chat_screen.dart';
 import 'package:sos_central/screens/home_screen.dart';
-import 'package:sos_central/features/profile/profile_page.dart';
 import 'package:sos_central/screens/login_screen.dart';
+import 'package:sos_central/screens/perfil_screen.dart';
 import 'package:sos_central/screens/pesquisa_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -39,11 +39,11 @@ class MainScreen extends StatefulWidget {
               _pageIndex = value;
             });
           },
-          children:[
-            const HomeScreen(),
-            const SearchScreen(),
-            const ChatScreen(),
-            LoginScreen()
+          children: [
+            HomeScreen(),
+            SearchScreen(),
+            ChatScreen(),
+            PerfilScreen(),
           ],
         ),
       bottomNavigationBar: BottomNavBar(currentIndex: _pageIndex, onTap: (value){

@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sos_central/app.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sos_central/screens/abertura.dart';
 import 'package:sos_central/services/autenticador.dart';
 
 void main() async {
@@ -10,14 +10,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MultiProvider(
+
+  runApp(
+    MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AutenticacaoServico()),
       ],
-      child: MaterialApp(
-        title: 'SOS Cental',
-        theme: ThemeData(splashColor: Colors.transparent),
-        debugShowCheckedModeBanner: false,
-        home: const TelaAbertura(),
-      )));
+      child: const App(),
+    ),
+  );
 }
